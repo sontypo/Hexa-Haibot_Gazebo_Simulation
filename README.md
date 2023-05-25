@@ -1,3 +1,5 @@
+![image](https://github.com/sontypo/Hexa-Haibot_Gazebo_Simulation/assets/67283783/c1b0e4a5-3fc9-4b42-84d9-08cf16e34f42)
+
 ____________<HAIBOTLAB> HEXA-HAIBOT GAZEBO SIMULATION____________
 
 <Son_Nguyen: son94227@gmail.com> 
