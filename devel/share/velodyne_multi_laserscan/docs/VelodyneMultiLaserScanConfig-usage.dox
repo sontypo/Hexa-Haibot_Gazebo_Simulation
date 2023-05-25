@@ -1,0 +1,9 @@
+\subsubsection usage Usage
+\verbatim
+<node name="velodyne_multi_laserscan" pkg="velodyne_multi_laserscan" type="velodyne_multi_laserscan">
+  <param name="min_z" type="double" value="0.0" />
+  <param name="max_z" type="double" value="1.0" />
+  <param name="resolution" type="double" value="0.10472" />
+</node>
+\endverbatim
+

@@ -1,0 +1,8 @@
+prefix=/home/saun/6legged_robot/install
+
+Name: ros_to_mcu
+Description: Description of ros_to_mcu
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

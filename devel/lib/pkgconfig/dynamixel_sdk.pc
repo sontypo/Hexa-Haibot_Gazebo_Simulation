@@ -1,0 +1,8 @@
+prefix=/home/saun/6legged_robot/devel
+
+Name: dynamixel_sdk
+Description: Description of dynamixel_sdk
+Version: 3.6.2
+Cflags: -I/home/saun/6legged_robot/src/hexapod_ros/dynamixel_sdk/include
+Libs: -L${prefix}/lib -ldynamixel_sdk
+Requires: roscpp

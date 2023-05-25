@@ -1,0 +1,8 @@
+prefix=/home/saun/6legged_robot/devel
+
+Name: deep_rl_hexapod
+Description: Description of deep_rl_hexapod
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,1753 @@
+<?xml version="1.0"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="hexapod_haibot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- MATERIAL PROPERTIES -->
+  <gazebo reference="base_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <gazebo reference="coxa_1">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="coxa_2">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="coxa_3">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="coxa_4">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="coxa_5">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="coxa_6">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="femur_1">
+    <material>Gazebo/TurquoiseGlowOutline</material>
+  </gazebo>
+  <gazebo reference="femur_2">
+    <material>Gazebo/TurquoiseGlowOutline</material>
+  </gazebo>
+  <gazebo reference="femur_3">
+    <material>Gazebo/TurquoiseGlowOutline</material>
+  </gazebo>
+  <gazebo reference="femur_4">
+    <material>Gazebo/TurquoiseGlowOutline</material>
+  </gazebo>
+  <gazebo reference="femur_5">
+    <material>Gazebo/TurquoiseGlowOutline</material>
+  </gazebo>
+  <gazebo reference="femur_6">
+    <material>Gazebo/TurquoiseGlowOutline</material>
+  </gazebo>
+  <gazebo reference="tibia_1">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="tibia_2">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="tibia_3">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="tibia_4">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="tibia_5">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="tibia_6">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <!-- ############################################################################################################### -->
+  <!-- ROBOT BASE -->
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.000235954357342191 7.54327648189342E-06 0.1227178717292"
+        rpy="0 0 0" />
+      <mass
+        value="1.21169978454244" />
+      <inertia
+        ixx="0.00915831944870312"
+        ixy="-7.10521119638147E-07"
+        ixz="-8.84150170670591E-06"
+        iyy="0.00979644782668004"
+        iyz="1.97028180144695E-07"
+        izz="0.00428132557153675" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.4 0.5 0.7 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- ############################################################################################################### -->
+  <!-- LEG 1 -->
+  <link name="coxa_1">
+    <inertial>
+      <origin
+        xyz="0.0299971745393872 2.6370965719516E-06 0.022"
+        rpy="0 0 0" />
+      <mass
+        value="0.0551210467328803" />
+      <inertia
+        ixx="3.53282132522675E-05"
+        ixy="-4.36119640905737E-09"
+        ixz="-1.19310926543601E-21"
+        iyy="3.83050011945573E-05"
+        iyz="-2.25289428125014E-21"
+        izz="3.83009260758546E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.933333333333333 0.933333333333333 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="coxa_1_joint" type="revolute">
+    <origin
+      xyz="0.094347 -0.064347 0"
+      rpy="0 0 -0.78008" />
+    <parent
+      link="base_link" />
+    <child
+      link="coxa_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="coxa_transmission_1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="coxa_1_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="coxa_motor_1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="femur_1">
+    <inertial>
+      <origin
+        xyz="0.0390038961416134 2.77555756156289E-17 -0.000127300882164495"
+        rpy="0 0 0" />
+      <mass
+        value="0.101060221285622" />
+      <inertia
+        ixx="2.70779732387671E-05"
+        ixy="-8.55503276726843E-20"
+        ixz="7.62790212768512E-09"
+        iyy="0.000113343849974385"
+        iyz="2.31687189926496E-20"
+        izz="9.72264920104687E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="femur_1_joint" type="revolute">
+    <origin
+      xyz="0.06 0 0.022"
+      rpy="1.5708 -0.60765 0" />
+    <parent
+      link="coxa_1" />
+    <child
+      link="femur_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="femur_transmission_1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="femur_1_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="femur_motor_1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="tibia_1">
+    <inertial>
+      <origin
+        xyz="0.0647793877370392 1.67357076086283E-07 4.1140457842509E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.079753578257712" />
+      <inertia
+        ixx="4.29473134297159E-05"
+        ixy="-5.47973506938731E-10"
+        ixz="1.27952682202404E-10"
+        iyy="0.000201360752347867"
+        iyz="-5.78595613282609E-11"
+        izz="0.000168424442883887" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="tibia_1_joint" type="revolute">
+    <origin
+      xyz="0.078299 0 0"
+      rpy="0 0 -1.9765" />
+    <parent
+      link="femur_1" />
+    <child
+      link="tibia_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="tibia_transmission_1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="tibia_1_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="tibia_motor_1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- ############################################################################################################### -->
+  <!-- LEG 3 -->
+  <link name="coxa_3">
+    <inertial>
+      <origin
+        xyz="0.0299971745393872 2.63709657192558E-06 0.022"
+        rpy="0 0 0" />
+      <mass
+        value="0.0551210467328803" />
+      <inertia
+        ixx="3.53282132522675E-05"
+        ixy="-4.36119640902516E-09"
+        ixz="2.69730911821053E-24"
+        iyy="3.83050011945573E-05"
+        iyz="2.06777561367272E-22"
+        izz="3.83009260758546E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.933333333333333 0.933333333333333 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="coxa_3_joint" type="revolute">
+    <origin
+      xyz="0 -0.086 0"
+      rpy="0 0 -1.5578" />
+    <parent
+      link="base_link" />
+    <child
+      link="coxa_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="coxa_transmission_3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="coxa_3_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="coxa_motor_3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="femur_3">
+    <inertial>
+      <origin
+        xyz="-0.0389961038583868 2.91433543964104E-16 -0.00012730088216462"
+        rpy="0 0 0" />
+      <mass
+        value="0.101060221285622" />
+      <inertia
+        ixx="2.70779732387671E-05"
+        ixy="-6.09863722023096E-20"
+        ixz="7.62790212764231E-09"
+        iyy="0.000113343849974385"
+        iyz="-3.04459532260779E-21"
+        izz="9.72264920104688E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="femur_3_joint" type="revolute">
+    <origin
+      xyz="0.06 0 0.022"
+      rpy="1.5708 0.65437 -3.1416" />
+    <parent
+      link="coxa_3" />
+    <child
+      link="femur_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="femur_transmission_3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="femur_3_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="femur_motor_3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="tibia_3">
+    <inertial>
+      <origin
+        xyz="0.0647793402516186 1.63043285095199E-07 0.000500038719800597"
+        rpy="0 0 0" />
+      <mass
+        value="0.0797534321360176" />
+      <inertia
+        ixx="4.29472906774755E-05"
+        ixy="-4.35624446715095E-10"
+        ixz="1.25207647802794E-10"
+        iyy="0.000201360533986022"
+        iyz="-6.29881027872907E-11"
+        izz="0.000168424318950458" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="tibia_3_joint" type="revolute">
+    <origin
+      xyz="-0.078 0 0"
+      rpy="3.1416 0 -1.0584" />
+    <parent
+      link="femur_3" />
+    <child
+      link="tibia_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="tibia_transmission_3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="tibia_3_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="tibia_motor_3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- ############################################################################################################### -->
+  <!-- LEG 5 -->
+  <link name="coxa_5">
+    <inertial>
+      <origin
+        xyz="0.0299971745393872 2.63709657193079E-06 0.022"
+        rpy="0 0 0" />
+      <mass
+        value="0.0551210467328803" />
+      <inertia
+        ixx="3.53282132522675E-05"
+        ixy="-4.36119640903535E-09"
+        ixz="1.80769437480616E-21"
+        iyy="3.83050011945573E-05"
+        iyz="-4.17794109547708E-22"
+        izz="3.83009260758546E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.933333333333333 0.933333333333333 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="coxa_5_joint" type="revolute">
+    <origin
+      xyz="-0.094347 -0.064347 0"
+      rpy="0 0 -2.382" />
+    <parent
+      link="base_link" />
+    <child
+      link="coxa_5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="coxa_transmission_5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="coxa_5_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="coxa_motor_5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="femur_5">
+    <inertial>
+      <origin
+        xyz="-0.0389961038583868 2.63677968348475E-16 0.000372699117835631"
+        rpy="0 0 0" />
+      <mass
+        value="0.101060221285622" />
+      <inertia
+        ixx="2.70779732387672E-05"
+        ixy="-3.3881317890172E-20"
+        ixz="7.62790212768477E-09"
+        iyy="0.000113343849974385"
+        iyz="-1.03828633151966E-20"
+        izz="9.72264920104688E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="femur_5_joint" type="revolute">
+    <origin
+      xyz="0.06 0 0.022"
+      rpy="1.5707963267949 0.593256092891378 -3.14159265358979" />
+    <parent
+      link="coxa_5" />
+    <child
+      link="femur_5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="femur_transmission_5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="femur_5_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="femur_motor_5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="tibia_5">
+    <inertial>
+      <origin
+        xyz="0.064779381457328 1.66896180764375E-07 3.80265846762484E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0797535514364952" />
+      <inertia
+        ixx="4.29473122557609E-05"
+        ixy="-5.2039318251951E-10"
+        ixz="1.29346661267689E-10"
+        iyy="0.000201360728465127"
+        iyz="-5.8985320310437E-11"
+        izz="0.000168424442624692" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="tibia_5_joint" type="revolute">
+    <origin
+      xyz="-0.0779999999999999 0 0"
+      rpy="-3.14159265358979 0 -1.13530201040703" />
+    <parent
+      link="femur_5" />
+    <child
+      link="tibia_5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="tibia_transmission_5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="tibia_5_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="tibia_motor_5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- ############################################################################################################### --> 
+  <!-- LEG 2 -->
+  <link name="coxa_2">
+    <inertial>
+      <origin
+        xyz="0.0299971745393872 2.63709657193772E-06 0.022"
+        rpy="0 0 0" />
+      <mass
+        value="0.0551210467328803" />
+      <inertia
+        ixx="3.53282132522675E-05"
+        ixy="-4.36119640902688E-09"
+        ixz="8.22308446706767E-21"
+        iyy="3.83050011945573E-05"
+        iyz="-5.3717856970772E-21"
+        izz="3.83009260758546E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="coxa_2_joint" type="revolute">
+    <origin
+      xyz="0.094347 0.064347 0"
+      rpy="0 0 0.80623" />
+    <parent
+      link="base_link" />
+    <child
+      link="coxa_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="coxa_transmission_2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="coxa_2_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="coxa_motor_2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="femur_2">
+    <inertial>
+      <origin
+        xyz="0.0390038961416136 2.08166817117217E-16 0.000372699117835697"
+        rpy="0 0 0" />
+      <mass
+        value="0.101060221285622" />
+      <inertia
+        ixx="2.70779732387671E-05"
+        ixy="2.5410988417629E-20"
+        ixz="7.62790212764919E-09"
+        iyy="0.000113343849974385"
+        iyz="-8.02520653875577E-21"
+        izz="9.72264920104688E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.933333333333333 0.933333333333333 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="femur_2_joint" type="revolute">
+    <origin
+      xyz="0.06 0 0.022"
+      rpy="-1.5707963267949 -0.570757388235316 0" />
+    <parent
+      link="coxa_2" />
+    <child
+      link="femur_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="femur_transmission_2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="femur_2_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="femur_motor_2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="tibia_2">
+    <inertial>
+      <origin
+        xyz="0.064779231371056 1.52274239939576E-07 2.12012769632008E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0797532028820055" />
+      <inertia
+        ixx="4.29472740175955E-05"
+        ixy="-2.26598724123957E-10"
+        ixz="1.75883824016018E-10"
+        iyy="0.000201359999099"
+        iyz="-5.69751259621584E-11"
+        izz="0.00016842391204068" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="tibia_2_joint" type="revolute">
+    <origin
+      xyz="0.0782991733331755 0 0"
+      rpy="0 0 1.89648504438712" />
+    <parent
+      link="femur_2" />
+    <child
+      link="tibia_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="tibia_transmission_2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="tibia_2_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="tibia_motor_2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- ############################################################################################################### -->
+  <!-- LEG 4 -->
+  <link name="coxa_4">
+    <inertial>
+      <origin
+        xyz="0.0299971745393872 2.63709657194119E-06 0.022"
+        rpy="0 0 0" />
+      <mass
+        value="0.0551210467328803" />
+      <inertia
+        ixx="3.53282132522675E-05"
+        ixy="-4.36119640900794E-09"
+        ixz="-4.47192022000883E-21"
+        iyy="3.83050011945573E-05"
+        iyz="5.74775956109057E-22"
+        izz="3.83009260758547E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.933333333333333 0.933333333333333 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="coxa_4_joint" type="revolute">
+    <origin
+      xyz="0 0.086 0"
+      rpy="0 0 1.5689" />
+    <parent
+      link="base_link" />
+    <child
+      link="coxa_4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="coxa_transmission_4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="coxa_4_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="coxa_motor_4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="femur_4">
+    <inertial>
+      <origin
+        xyz="-0.0389961038583868 6.93889390390723E-18 0.000372699117835451"
+        rpy="0 0 0" />
+      <mass
+        value="0.101060221285622" />
+      <inertia
+        ixx="2.70779732387671E-05"
+        ixy="-7.19978005166155E-20"
+        ixz="7.62790212765141E-09"
+        iyy="0.000113343849974385"
+        iyz="-3.48342269862745E-22"
+        izz="9.72264920104686E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="femur_4_joint" type="revolute">
+    <origin
+      xyz="0.06 0 0.022"
+      rpy="1.5707963267949 0.5837559928844 -3.14159265358979" />
+    <parent
+      link="coxa_4" />
+    <child
+      link="femur_4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="femur_transmission_4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="femur_4_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="femur_motor_4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="tibia_4">
+    <inertial>
+      <origin
+        xyz="0.0647793120469972 1.61127922004844E-07 3.42567992661711E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.07975336132891" />
+      <inertia
+        ixx="4.29472859486317E-05"
+        ixy="-3.70486815918369E-10"
+        ixz="1.35541564555372E-10"
+        iyy="0.000201360398778229"
+        iyz="-6.22672928706743E-11"
+        izz="0.000168424231028227" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="tibia_4_joint" type="revolute">
+    <origin
+      xyz="-0.0811639254473974 0 0"
+      rpy="0 0 -1.16162210028502" />
+    <parent
+      link="femur_4" />
+    <child
+      link="tibia_4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="tibia_transmission_4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="tibia_4_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="tibia_motor_4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- ############################################################################################################### -->
+  <!-- LEG 6 -->
+  <link name="coxa_6">
+    <inertial>
+      <origin
+        xyz="0.0299971745393872 2.63709657190303E-06 0.022"
+        rpy="0 0 0" />
+      <mass
+        value="0.0551210467328803" />
+      <inertia
+        ixx="3.53282132522675E-05"
+        ixy="-4.36119640899131E-09"
+        ixz="-7.71993193239305E-22"
+        iyy="3.83050011945573E-05"
+        iyz="-1.78962730252462E-21"
+        izz="3.83009260758547E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.933333333333333 0.933333333333333 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/coxa_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="coxa_6_joint" type="revolute">
+    <origin
+      xyz="-0.0943467170879763 0.064346717087976 0"
+      rpy="0 0 2.4295431200388" />
+    <parent
+      link="base_link" />
+    <child
+      link="coxa_6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="coxa_transmission_6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="coxa_6_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="coxa_motor_6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="femur_6">
+    <inertial>
+      <origin
+        xyz="-0.0389961038583869 3.7470027081099E-16 0.00037269911783608"
+        rpy="0 0 0" />
+      <mass
+        value="0.101060221285622" />
+      <inertia
+        ixx="2.70779732387671E-05"
+        ixy="7.03037346221069E-20"
+        ixz="7.6279021276603E-09"
+        iyy="0.000113343849974385"
+        iyz="2.24421274376376E-21"
+        izz="9.72264920104687E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/femur_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="femur_6_joint" type="revolute">
+    <origin
+      xyz="0.06 0 0.022"
+      rpy="1.5707963267949 0.626103382784505 -3.14159265358979" />
+    <parent
+      link="coxa_6" />
+    <child
+      link="femur_6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="femur_transmission_6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="femur_6_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="femur_motor_6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link name="tibia_6">
+    <inertial>
+      <origin
+        xyz="0.0647792452262229 1.53521399037793E-07 0.00050002469269308"
+        rpy="0 0 0" />
+      <mass
+        value="0.0797532266116497" />
+      <inertia
+        ixx="4.29472765643027E-05"
+        ixy="-2.45111381582697E-10"
+        ixz="1.64681151050093E-10"
+        iyy="0.000201360069597061"
+        iyz="-5.85587638797844E-11"
+        izz="0.000168423974316692" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://hexapod_haibot/meshes/tibia_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="tibia_6_joint" type="revolute">
+    <origin
+      xyz="-0.0811639254473975 0 0"
+      rpy="0 0 -1.14255285693864" />
+    <parent
+      link="femur_6" />
+    <child
+      link="tibia_6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3"
+      velocity="0.262" />
+  </joint>
+
+  <transmission name="tibia_transmission_6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="tibia_6_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="tibia_motor_6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- ############################################################################################################### -->
+  <!-- VLP-16 -->
+  <joint name="VLP_mount_joint" type="fixed">
+    <origin
+      xyz="0 0 0.16"
+      rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="VLP_mount"/>
+  </joint>
+
+  <link name="VLP_mount">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia
+          ixx="1.0" ixy="0.0"  ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod_haibot/meshes/sensors/VLP16_base_1.dae" />
+      </geometry>
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod_haibot/meshes/sensors/VLP16_base_2.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.0516" length="0.0717"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="VLP_joint" type="fixed" >
+    <origin xyz="0 0 0.01" rpy="0 0 0" />
+    <parent link="VLP_mount" />
+    <child link="velodyne"/>
+  </joint>
+
+  <link name="velodyne">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1e-7" ixy="0" ixz="0" iyy="1e-7" iyz="0" izz="1e-7"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_haibot/meshes/sensors/VLP16_scan.dae" />
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- Gazebo requires the velodyne_gazebo_plugins package -->
+  <gazebo reference="velodyne">
+    <!-- type: {ray | gpu_ray} -->
+      <sensor type="ray" name="velodyne_16"> 
+        <pose>0 0 0 0 0 0</pose>
+        <visualize>false</visualize>
+        <update_rate>10</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>60</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.1415926535897931</min_angle>
+              <max_angle>3.1415926535897931</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>3</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.261799388</min_angle>
+              <max_angle>0.261799388</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.3</min>
+            <max>131.0</max>
+            <resolution>0.001</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.0</stddev>
+          </noise>
+        </ray>
+        <!-- filename="libgazebo_ros_velodyne_gpu_laser.so" -->
+        <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
+          <topicName>velodyne_points</topicName>
+          <frameName>base_link</frameName>
+          <min_range>0.3</min_range>
+          <max_range>130.0</max_range>
+          <gaussianNoise>0.008</gaussianNoise>
+        </plugin>
+      </sensor>
+  </gazebo>
+
+  <!-- ############################################################################################################### -->
+  <!-- IMU -->
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="-0.0254 0.02032 0.048" rpy="1.570796327 0 0"/>
+  </joint>
+
+  <link name="imu_link">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1e-7" ixy="0" ixz="0" iyy="1e-7" iyz="0" izz="1e-7"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_haibot/meshes/sensors/imu.stl" scale="0.002 0.002 0.002"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <material>Gazebo/Grass</material>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <serviceName>imu_service</serviceName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+        <imu>
+          <noise>
+            <type>gaussian</type>
+            <rate>
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </rate>
+            <accel>
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </accel>
+          </noise>
+        </imu>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+
+  <!-- ############################################################################################################### -->
+  <!-- REALSENSE -->
+  <joint name="realsense_joint" type="fixed">
+    <origin xyz="0.09 0.0125 0.1075" rpy="1.570796327 0 0"/>
+    <parent link="base_link"/>
+    <child link="realsense_bottom_screw_frame" />
+  </joint>
+
+  <link name="realsense_bottom_screw_frame"/>
+
+  <joint name="realsense_link_joint" type="fixed">
+    <origin xyz="0 0.0125 0.0125" rpy="0 0 0"/>
+    <parent link="realsense_bottom_screw_frame"/>
+    <child link="realsense_link" />
+  </joint>
+
+  <link name="realsense_link">
+    <visual>
+    <origin xyz="0 0 0" rpy="0 1.570796327 0"/>
+      <geometry>
+        <mesh filename="package://hexapod_haibot/meshes/sensors/realsense.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 1.570796327 0"/>
+      <geometry>
+        <mesh filename="package://hexapod_haibot/meshes/sensors/realsense.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <!-- <mass value="0.564" /> -->
+      <mass value="0.01" />
+      <origin xyz="0 1.570796327 0" />
+      <inertia ixx="0.0003881243" ixy="0.0" ixz="0.0" iyy="0.0000498940" iyz="0.0" izz="0.0003879257" />
+    </inertial>
+  </link>
+ 
+  <!-- camera depth joints and links -->
+  <joint name="realsense_depth_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="realsense_link"/>
+    <child link="realsense_depth_frame" />
+  </joint>
+
+  <link name="realsense_depth_frame"/>
+
+  <joint name="realsense_depth_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.570796327 0 -1.570796327" />
+    <parent link="realsense_depth_frame" />
+    <child link="realsense_depth_optical_frame" />
+  </joint>
+
+  <link name="realsense_depth_optical_frame"/>
+    
+  <!-- camera left IR joints and links -->
+  <joint name="realsense_left_ir_joint" type="fixed">
+    <origin xyz="0 0.0 0" rpy="0 0 0" />
+    <parent link="realsense_depth_frame" />
+    <child link="realsense_left_ir_frame" />
+  </joint>
+
+  <link name="realsense_left_ir_frame"/>
+
+  <joint name="realsense_left_ir_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.570796327 0 -1.570796327" />
+    <parent link="realsense_left_ir_frame" />
+    <child link="realsense_left_ir_optical_frame" />
+  </joint>
+
+  <link name="realsense_left_ir_optical_frame"/>
+
+  <!-- camera right IR joints and links -->
+  <joint name="realsense_right_ir_joint" type="fixed">
+    <origin xyz="0 -0.05 0" rpy="0 0 0" />
+    <parent link="realsense_depth_frame" />
+    <child link="realsense_right_ir_frame" />
+  </joint>
+
+  <link name="realsense_right_ir_frame"/>
+
+  <joint name="realsense_right_ir_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.570796327 0 -1.570796327" />
+    <parent link="realsense_right_ir_frame" />
+    <child link="realsense_right_ir_optical_frame" />
+  </joint>
+
+  <link name="realsense_right_ir_optical_frame"/>
+
+  <!-- camera color joints and links -->
+  <joint name="realsense_color_joint" type="fixed">
+    <origin xyz="0 0.015 0" rpy="0 0 0" />
+    <parent link="realsense_depth_frame" />
+    <child link="realsense_color_frame" />
+  </joint>
+
+  <link name="realsense_color_frame"/>
+
+  <joint name="realsense_color_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.570796327 0 -1.570796327" />
+    <parent link="realsense_color_frame" />
+    <child link="realsense_color_optical_frame" />
+  </joint>
+  
+  <link name="realsense_color_optical_frame"/>
+
+  <gazebo reference="realsense_link">
+    <self_collide>0</self_collide>
+    <enable_wind>0</enable_wind>
+    <kinematic>0</kinematic>
+    <gravity>1</gravity>
+    <material>Gazebo/Grey</material>
+    <!--<mu>1</mu>-->
+    <mu2>1</mu2>
+    <fdir1>0 0 0</fdir1>
+    <!--<slip1>0</slip1>
+    <slip2>0</slip2>-->
+    <kp>1e+13</kp>
+    <kd>1</kd>
+    <!--<max_vel>0.01</max_vel>
+    <min_depth>0</min_depth>-->
+    <sensor name="realsense_color" type="camera">
+      <camera name="realsense">
+        <horizontal_fov>1.211258501</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>RGB_INT8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>0</visualize>
+    </sensor>
+    
+    <sensor name="realsense_ired1" type="camera">
+      <camera name="realsense">
+        <horizontal_fov>1.487020523</horizontal_fov>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+          <format>L_INT8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.05</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>90</update_rate>
+      <visualize>0</visualize>
+    </sensor>
+
+    <sensor name="realsense_ired2" type="camera">
+      <camera name="realsense">
+        <horizontal_fov>1.487020523</horizontal_fov>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+          <format>L_INT8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.05</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>90</update_rate>
+      <visualize>0</visualize>
+    </sensor>
+
+    <sensor name="realsense_depth" type="depth">
+      <camera name="realsense">
+        <horizontal_fov>1.487020523</horizontal_fov>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.100</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>90</update_rate>
+      <visualize>0</visualize>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="realsense" filename="librealsense_gazebo_plugin.so">
+      <prefix>realsense</prefix>
+      <depthUpdateRate>30.0</depthUpdateRate>
+      <colorUpdateRate>30.0</colorUpdateRate>
+      <infraredUpdateRate>30.0</infraredUpdateRate>
+      <depthTopicName>depth/image_raw</depthTopicName>
+      <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
+      <colorTopicName>color/image_raw</colorTopicName>
+      <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
+      <infrared1TopicName>infra1/image_raw</infrared1TopicName>
+      <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
+      <infrared2TopicName>infra2/image_raw</infrared2TopicName>
+      <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
+      <colorOpticalframeName>realsense_color_optical_frame</colorOpticalframeName>
+      <depthOpticalframeName>realsense_depth_optical_frame</depthOpticalframeName>
+      <infrared1OpticalframeName>realsense_left_ir_frame</infrared1OpticalframeName>
+      <infrared2OpticalframeName>realsense_right_ir_frame</infrared2OpticalframeName>
+      <rangeMinDepth>0.2</rangeMinDepth>
+      <rangeMaxDepth>10.0</rangeMaxDepth>
+      <pointCloud>true</pointCloud>
+      <pointCloudTopicName>depth/color/points</pointCloudTopicName>
+      <pointCloudCutoff>0.25</pointCloudCutoff>
+      <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
+    </plugin>
+  </gazebo>
+
+  <!-- ############################################################################################################### -->
+  <!-- GAZEBO PLUGIN -->
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <robotNamespace>/hexa_haibot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,8 @@
+prefix=/home/saun/6legged_robot/install
+
+Name: h_robix_description
+Description: Description of h_robix_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

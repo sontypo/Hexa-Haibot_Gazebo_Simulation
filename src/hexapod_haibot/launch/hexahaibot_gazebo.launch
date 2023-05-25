@@ -1,0 +1,58 @@
+<launch>
+
+  <!-- Pre-order argurments -->
+  <arg name="x_pos" default="0.0"/>
+  <arg name="y_pos" default="0.0"/>
+  <arg name="z_pos" default="0.12"/>
+  <arg name="Yaw" default="0.0"/>
+
+  <!-- Define the based environment -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="worlds/empty.world"/> -->
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+  
+  <!-- Respawning robot description -->
+  <param name="robot_description" command="cat '$(find hexapod_haibot)/urdf/hexapod_haibot.urdf'" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model hexa_haibot 
+                                                                    -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -Y $(arg Yaw)" />
+
+  <!-- Load joint controller configuration file -->
+  <rosparam file="$(find hexapod_haibot)/config/hexa_haibot_control.yaml" command="load"/>
+
+  <!-- Load the JointState controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/hexa_haibot"
+    args="coxa_1_joint_position_controller
+          coxa_2_joint_position_controller
+          coxa_3_joint_position_controller
+          coxa_4_joint_position_controller
+          coxa_5_joint_position_controller
+          coxa_6_joint_position_controller
+          femur_1_joint_position_controller
+          femur_2_joint_position_controller
+          femur_3_joint_position_controller
+          femur_4_joint_position_controller
+          femur_5_joint_position_controller
+          femur_6_joint_position_controller
+          tibia_1_joint_position_controller
+          tibia_2_joint_position_controller
+          tibia_3_joint_position_controller
+          tibia_4_joint_position_controller
+          tibia_5_joint_position_controller
+          tibia_6_joint_position_controller
+          joint_state_controller"/>
+
+  <!-- Convert joint states to TF transforms -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/hexa_haibot/joint_states"/>
+  </node>
+
+  <node pkg="hexapod_haibot" type="walker.py" name="Hexapod_walking" output="screen"/>
+  
+</launch>

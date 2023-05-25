@@ -1,0 +1,8 @@
+prefix=/home/saun/6legged_robot/install
+
+Name: velodyne_multi_laserscan
+Description: Description of velodyne_multi_laserscan
+Version: 0.0.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lvelodyne_multi_laserscan
+Requires: dynamic_reconfigure roscpp sensor_msgs

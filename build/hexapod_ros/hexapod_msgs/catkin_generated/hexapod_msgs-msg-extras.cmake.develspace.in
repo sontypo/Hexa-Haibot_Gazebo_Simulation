@@ -1,0 +1,2 @@
+set(hexapod_msgs_MESSAGE_FILES "/home/saun/6legged_robot/src/hexapod_ros/hexapod_msgs/msg/LegJoints.msg;/home/saun/6legged_robot/src/hexapod_ros/hexapod_msgs/msg/LegsJoints.msg;/home/saun/6legged_robot/src/hexapod_ros/hexapod_msgs/msg/FeetPositions.msg;/home/saun/6legged_robot/src/hexapod_ros/hexapod_msgs/msg/Pose.msg;/home/saun/6legged_robot/src/hexapod_ros/hexapod_msgs/msg/RPY.msg;/home/saun/6legged_robot/src/hexapod_ros/hexapod_msgs/msg/Sounds.msg")
+set(hexapod_msgs_SERVICE_FILES "")
